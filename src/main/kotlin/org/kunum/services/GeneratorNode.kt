@@ -65,12 +65,12 @@ class GeneratorNode(val config:Properties) {
     fun getBucketFromDB(bucketName:String): Bucket? {
 
         localStorage?.getConnection().use {
-            val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=?")
+            val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=? AND deleted=0")
             pstat?.setString(1,bucketName)
             val rs=pstat?.executeQuery()
             if(rs?.next()==true)
             {
-                return sqlUtil.resultSetToBucket(rs)
+                return sqlUtil.resultSetToBucket(rs,BUCKET_LIMIT)
             }
             else
             {
@@ -83,7 +83,7 @@ class GeneratorNode(val config:Properties) {
 
     fun isSequenceAvailable(bucketName:String):Boolean{
             localStorage?.getConnection().use {
-            val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=?")
+            val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=? AND deleted=0")
             pstat?.setString(1,bucketName)
             return pstat?.executeQuery()?.next()?:false
         }
@@ -171,6 +171,37 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
+    fun resetSequenceInStorage(bucketName: String,value:Long):Unit{
+        localStorage?.getConnection().use {
+            val pstatement: PreparedStatement? = it?.prepareStatement(
+                """
+                UPDATE sequence SET startvalue=?, mostrecent=? WHERE name=?
+            """.trimIndent()
+            )
+            pstatement?.setLong(1,value)
+            pstatement?.setLong(2,value)
+            pstatement?.setString(3,bucketName)
+
+            val rows=pstatement?.executeUpdate()
+            if(rows != null && rows > 0) log.info("Update done")
+        }
+    }
+
+    fun deleteSequenceInStorage(bucketName: String):Unit{
+        localStorage?.getConnection().use {
+            val pstatement: PreparedStatement? = it?.prepareStatement(
+                """
+                UPDATE sequence SET deleted=? WHERE name=?
+            """.trimIndent()
+            )
+            pstatement?.setInt(1,1)
+            pstatement?.setString(2,bucketName)
+
+            val rows=pstatement?.executeUpdate()
+            if(rows != null && rows > 0) log.info("Update done")
+        }
+    }
+
     fun addEntryToLocalStorage(bucketToken: BucketToken):Unit{
         localStorage?.getConnection().use {
             val pstatement: PreparedStatement? = it?.prepareStatement(
@@ -191,9 +222,19 @@ class GeneratorNode(val config:Properties) {
     fun resetBucket(name:String,value:Long){
         var bucket=getBucket(name)
         bucket?.let {
-            ///todo
+            resetSequenceInStorage(it.name,value)
+            bucketMap.put(it.name, getBucket(it.name)!!)
         }
     }
+
+    fun deleteBucket(name:String){
+        var bucket=getBucket(name)
+        bucket?.let {
+            deleteSequenceInStorage(it.name)
+            bucketMap.remove(it.name)
+        }
+    }
+
 
     fun stop():Unit{
         log.info("Stopping the Generator node : ${this.nodeValue}")

@@ -46,7 +46,7 @@ class SQLUtil {
     }
 
 
-    fun resultSetToBucket(rs: ResultSet): Bucket
+    fun resultSetToBucket(rs: ResultSet,bucketSize:Int): Bucket
     {
         return Bucket(rs.getLong("id"),
             rs.getString("name"),
@@ -56,7 +56,7 @@ class SQLUtil {
             rs.getInt("deleted")==1,
             rs.getInt("paused")==1,
             rs.getString("node"),
-            TokenBucket( rs.getString("name"), LongSequence( if(rs.getString("mostrecent").toLong()>0L) rs.getString("mostrecent").toLong()+1L else rs.getString("startvalue").toLong()),1000),
+            TokenBucket( rs.getString("name"), LongSequence( if(rs.getString("mostrecent").toLong()>0L) rs.getString("mostrecent").toLong()+1L else rs.getString("startvalue").toLong()),bucketSize),
             rs.getString("mostrecent").toLong())
     }
 
