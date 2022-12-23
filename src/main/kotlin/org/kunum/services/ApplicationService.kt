@@ -1,6 +1,5 @@
 package org.kunum.services
 
-import org.kunum.util.getBoolean
 import org.slf4j.LoggerFactory
 import java.util.*
 

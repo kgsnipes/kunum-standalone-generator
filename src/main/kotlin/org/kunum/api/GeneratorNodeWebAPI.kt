@@ -4,8 +4,6 @@ import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder
 import io.javalin.http.Context
 import io.javalin.http.HttpStatus
-import io.javalin.http.InternalServerErrorResponse
-import io.javalin.http.staticfiles.Location
 import io.javalin.rendering.template.JavalinThymeleaf
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
