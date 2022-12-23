@@ -8,10 +8,7 @@ import org.kunum.api.GeneratorNodeWebAPI
 import org.kunum.core.TokenBucket
 import org.kunum.data.Bucket
 import org.kunum.data.BucketToken
-import org.kunum.util.DatabaseConnection
-import org.kunum.util.SQLUtil
-import org.kunum.util.getInt
-import org.kunum.util.getString
+import org.kunum.util.*
 import org.slf4j.LoggerFactory
 import java.sql.PreparedStatement
 import java.util.*
@@ -29,12 +26,12 @@ class GeneratorNode(val config:Properties) {
     var api:GeneratorNodeWebAPI?=null
 
     val VALID_TOKEN="Bearer ${config.getString("kunum.dummy.oauth.token")}"
-    private val client = OkHttpClient()
     private val sqlUtil:SQLUtil= SQLUtil()
 
     val bucketMap= mutableMapOf<String,TokenBucket>()
 
     val nodeValue=config.getString("kunum.generator.node.name")
+    val apiMode=config.getBoolean("kunum.generator.api.mode")
 
 
     init {
@@ -45,14 +42,16 @@ class GeneratorNode(val config:Properties) {
             sqlUtil.createSequenceTable(localStorage!!)
             sqlUtil.createSequenceEntryTable(localStorage!!)
             log.info("Starting up Web API for Generator Node")
-            api=GeneratorNodeWebAPI(this)
+           if(apiMode) {
+               api = GeneratorNodeWebAPI(this)
+           }
 
     }
 
     fun getAPIToken():String=VALID_TOKEN
 
 
-    fun getBucketFromDB(bucketName:String): Bucket? {
+    private fun getBucketFromDB(bucketName:String): Bucket? {
 
         localStorage?.getConnection().use {
             val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=? AND deleted=0")
@@ -71,7 +70,7 @@ class GeneratorNode(val config:Properties) {
     }
 
 
-    fun isSequenceAvailable(bucketName:String):Boolean{
+    private fun isSequenceAvailable(bucketName:String):Boolean{
             localStorage?.getConnection().use {
             val pstat=it?.prepareStatement("SELECT * FROM sequence WHERE name=? AND deleted=0")
             pstat?.setString(1,bucketName)
@@ -146,7 +145,7 @@ class GeneratorNode(val config:Properties) {
         return tokenBucket
     }
 
-    fun updateEntryToSequenceStorage(bucketToken:BucketToken):Unit{
+    private fun updateEntryToSequenceStorage(bucketToken:BucketToken):Unit{
         localStorage?.getConnection().use {
             val pstatement: PreparedStatement? = it?.prepareStatement(
                 """
@@ -161,7 +160,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun resetSequenceInStorage(bucketName: String,value:Long):Unit{
+    private fun resetSequenceInStorage(bucketName: String,value:Long):Unit{
         localStorage?.getConnection().use {
             val pstatement: PreparedStatement? = it?.prepareStatement(
                 """
@@ -177,7 +176,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun deleteSequenceInStorage(bucketName: String):Unit{
+    private fun deleteSequenceInStorage(bucketName: String):Unit{
         localStorage?.getConnection().use {
             val pstatement: PreparedStatement? = it?.prepareStatement(
                 """
@@ -192,7 +191,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun addEntryToLocalStorage(bucketToken: BucketToken):Unit{
+    private fun addEntryToLocalStorage(bucketToken: BucketToken):Unit{
         localStorage?.getConnection().use {
             val pstatement: PreparedStatement? = it?.prepareStatement(
                 """
