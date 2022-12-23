@@ -54,26 +54,26 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                     ctx.status(HttpStatus.FORBIDDEN).result("Unauthorized")
                 }
             }
-            config.staticFiles.add { staticFiles ->
-                staticFiles.hostedPath = "/"                    // change to host files on a subpath, like '/assets'
-                staticFiles.directory = "/public"               // the directory where your files are located
-                staticFiles.location =
-                    Location.CLASSPATH       // Location.CLASSPATH (jar) or Location.EXTERNAL (file system)
-                staticFiles.precompress =
-                    false                 // if the files should be pre-compressed and cached in memory (optimization)
-                staticFiles.aliasCheck =
-                    null                   // you can configure this to enable symlinks (= ContextHandler.ApproveAliases())
-                //                staticFiles.headers = mapOf(...)                // headers that will be set for the files
-                staticFiles.skipFileFunction =
-                    { req -> false } // you can use this to skip certain files in the dir, based on the HttpServletRequest
-            }
+//            config.staticFiles.add { staticFiles ->
+//                staticFiles.hostedPath = "/"                    // change to host files on a subpath, like '/assets'
+//                staticFiles.directory = "/public"               // the directory where your files are located
+//                staticFiles.location =
+//                    Location.CLASSPATH       // Location.CLASSPATH (jar) or Location.EXTERNAL (file system)
+//                staticFiles.precompress =
+//                    false                 // if the files should be pre-compressed and cached in memory (optimization)
+//                staticFiles.aliasCheck =
+//                    null                   // you can configure this to enable symlinks (= ContextHandler.ApproveAliases())
+//                //                staticFiles.headers = mapOf(...)                // headers that will be set for the files
+//                staticFiles.skipFileFunction =
+//                    { req -> false } // you can use this to skip certain files in the dir, based on the HttpServletRequest
+//            }
             config.showJavalinBanner = false
         }
 
         api.routes {
-                ApiBuilder.path("api/token")
+                ApiBuilder.path("api/bucket")
                 {
-                    ApiBuilder.get("{name}", { ctx ->
+                    ApiBuilder.get("{name}/token", { ctx ->
                         ctx.result(
                             """
                                 {
@@ -81,6 +81,18 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                                 }
                             """.trimIndent()
                         )
+                        ctx.status(HttpStatus.OK)
+                    }, Role.USER)
+                    ApiBuilder.get("{name}/create/{startValue}", { ctx ->
+                        //TODO
+                        ctx.status(HttpStatus.OK)
+                    }, Role.USER)
+                    ApiBuilder.get("{name}/reset/{resetValue}", { ctx ->
+                        //TODO
+                        ctx.status(HttpStatus.OK)
+                    }, Role.USER)
+                    ApiBuilder.get("{name}/delete", { ctx ->
+                        //TODO
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                 }

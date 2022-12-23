@@ -7,7 +7,7 @@ import java.sql.ResultSet
 
 class SQLUtil {
 
-    fun createLocalDBTable(localStorage: DatabaseConnection)
+    fun createLocalDBTable(storage: DatabaseConnection)
     {
         val entriesTableSQL="""
             CREATE TABLE IF NOT EXISTS sequenceentries(
@@ -18,7 +18,7 @@ class SQLUtil {
             )
         """.trimIndent()
 
-        createTableInDB(entriesTableSQL,localStorage)
+        createTableInDB(entriesTableSQL,storage)
     }
 
     fun createTableInDB(sql:String,dbConnection: DatabaseConnection?):Unit{
@@ -27,7 +27,7 @@ class SQLUtil {
         }
     }
 
-    fun createSequenceDBTables(sequenceStorage: DatabaseConnection)
+    fun createSequenceDBTables(storage: DatabaseConnection)
     {
         val sequenceTableSQL="""
             CREATE TABLE IF NOT EXISTS sequence(
@@ -42,7 +42,7 @@ class SQLUtil {
             node TEXT
             )
         """.trimIndent()
-        createTableInDB(sequenceTableSQL,sequenceStorage)
+        createTableInDB(sequenceTableSQL,storage)
     }
 
     fun createNodeHealthDBTable(sequenceStorage: DatabaseConnection)
@@ -69,7 +69,7 @@ class SQLUtil {
             rs.getInt("deleted")==1,
             rs.getInt("paused")==1,
             rs.getString("node"),
-            TokenBucket( rs.getString("name"), LongSequence( rs.getString("name"),if(rs.getString("mostrecent").toLong()>0L) rs.getString("mostrecent").toLong()+1L else rs.getString("startvalue").toLong()),1000),
+            TokenBucket( rs.getString("name"), LongSequence( if(rs.getString("mostrecent").toLong()>0L) rs.getString("mostrecent").toLong()+1L else rs.getString("startvalue").toLong()),1000),
             rs.getString("mostrecent").toLong())
     }
 

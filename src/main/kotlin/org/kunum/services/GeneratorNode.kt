@@ -31,14 +31,8 @@ class GeneratorNode(val config:Properties) {
     private var JDBC_URL=config.getString("kunum.generator.jdbcURL")
     private val log= LoggerFactory.getLogger("GeneratorNode")
 
-    var nodeValue="NA"
     val BUCKET_LIMIT=config.getInt("kunum.generator.bucket.limit")
     var serverPort=config.getInt("kunum.generator.server.port")
-    var monitorURL=config.getString("kunum.monitor.url")
-    var monitorHost="${monitorURL}:${serverPort}"
-    val monitorNodeURL= "$monitorHost/api/node/"
-    val monitorNodeRegistrationURL= "$monitorHost/api/node/register"
-    val monitorNodePingURL= "$monitorHost/api/node/ping/"
     var localStorage:DatabaseConnection?=null
 
     var api:GeneratorNodeWebAPI?=null
@@ -46,14 +40,14 @@ class GeneratorNode(val config:Properties) {
     val VALID_TOKEN="Bearer ${config.getString("kunum.dummy.oauth.token")}"
     private val client = OkHttpClient()
     private val sqlUtil:SQLUtil= SQLUtil()
-    private val nodeRegistrationMode=config.getString("kunum.generator.register.mode")
 
     val bucketMap= mutableMapOf<String,TokenBucket>()
+
+    val nodeValue=config.getString("kunum.generator.node.name")
 
 
     init {
             log.info("Starting up Generator Node")
-            performNodeRegistration()
             log.info("Creating Local Storage connection")
             localStorage=DatabaseConnection(JDBC_URL)
             log.info("Creating Local Storage tables")
@@ -65,65 +59,6 @@ class GeneratorNode(val config:Properties) {
 
     fun getAPIToken():String=VALID_TOKEN
 
-    fun performNodeRegistration(){
-        if(nodeRegistrationMode!="None")
-        {
-            log.info("Trying to assign Node Name")
-            assignNodeName()
-            log.info("Node Name Assigned !! ${this.nodeValue}")
-
-        }
-        else
-        {
-            this.nodeValue="node_${SecureRandom(byteArrayOf(1,1,1)).nextInt()}"
-        }
-    }
-
-
-    fun assignNodeName():Unit{
-
-        try {
-            val request = Request.Builder()
-                .url(monitorNodeRegistrationURL)
-                .header("Authorization", getAPIToken())
-                .get()
-                .build()
-
-            client.newCall(request).execute().use { response ->
-                if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                else nodeValue=response.body?.string()?:throw java.lang.RuntimeException("Could not register the node")
-            }
-
-        }catch (e:Exception)
-        {
-            log.error(e.message)
-            throw e
-        }
-    }
-
-
-    fun updateEntryToSequenceStorage(token:BucketToken){
-
-        try {
-            val postBody=Json.encodeToString(token)
-            val request = Request.Builder()
-                .url("$monitorURL/api/bucket")
-                .header("Authorization", getAPIToken())
-                .header("node", nodeValue)
-                .post(postBody.toRequestBody("application/json".toMediaType()))
-                .build()
-
-            client.newCall(request).execute().use { response ->
-                if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                else log.info("Update was successful to sequence storage")
-            }
-
-        }catch (e:Exception)
-        {
-            log.error(e.message)
-            throw e
-        }
-    }
 
     fun getTokenFromBucket(bucketName:String):String{
 
