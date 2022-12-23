@@ -126,20 +126,8 @@ class GeneratorNode(val config:Properties) {
     }
 
 
-
     fun getTokenFromBucket(bucketName:String):String{
-
-        if(bucketMap.get(bucketName)==null)
-        {
-            val bucket=getBucketFromDB(bucketName)
-
-            bucket?.let {
-                bucketMap.put(it.name,it.sequencer!!)
-            }
-
-        }
-
-        val token=bucketMap.get(bucketName)?.getToken()
+        val token=getBucket(bucketName)?.getToken()
         token?.let{
             CoroutineScope(EmptyCoroutineContext).launch{
                 val time=System.currentTimeMillis()
@@ -148,6 +136,39 @@ class GeneratorNode(val config:Properties) {
             }
         }
         return token?:throw java.lang.RuntimeException("No Token available")
+    }
+
+    fun getBucket(bucketName:String):TokenBucket?{
+        var tokenBucket:TokenBucket?=null
+        if(bucketMap.get(bucketName)==null)
+        {
+            val bucket=getBucketFromDB(bucketName)
+
+            bucket?.let {
+                if(bucketMap.size<=BUCKET_LIMIT) {
+                    bucketMap.put(it.name, it.sequencer!!)
+                    tokenBucket = it.sequencer
+                }
+                else
+                    throw java.lang.RuntimeException("Cannot add bucket, out of capacity")
+            }
+        }
+        return tokenBucket
+    }
+
+    fun updateEntryToSequenceStorage(bucketToken:BucketToken):Unit{
+        localStorage?.getConnection().use {
+            val pstatement: PreparedStatement? = it?.prepareStatement(
+                """
+                UPDATE sequence SET mostrecent=? WHERE name=?
+            """.trimIndent()
+            )
+            pstatement?.setString(1,bucketToken.id.toString())
+            pstatement?.setString(2,bucketToken.bucket)
+
+            val rows=pstatement?.executeUpdate()
+            if(rows != null && rows > 0) log.info("Update done")
+        }
     }
 
     fun addEntryToLocalStorage(bucketToken: BucketToken):Unit{
@@ -164,6 +185,13 @@ class GeneratorNode(val config:Properties) {
 
             val rows=pstatement?.executeUpdate()
             if(rows != null && rows > 0) log.info("Update done")
+        }
+    }
+
+    fun resetBucket(name:String,value:Long){
+        var bucket=getBucket(name)
+        bucket?.let {
+            ///todo
         }
     }
 

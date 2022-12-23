@@ -71,7 +71,16 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                     ApiBuilder.get("{name}/create/{startValue}", { ctx ->
-                        //TODO
+                        val bucket=generatorNode.createBucket(ctx.pathParam("name"),ctx.pathParam("startValue").toLong())
+                        bucket?.let {
+                            ctx.result("""
+                                {
+                                  "bucketId":"${it.id}",
+                                  "bucketName":"${it.name}",
+                                  "bucketStartValue":${it.startValue}
+                                }
+                            """.trimIndent())
+                        }
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                     ApiBuilder.get("{name}/reset/{resetValue}", { ctx ->
