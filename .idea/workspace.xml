@@ -95,7 +95,7 @@
       <command value="gradle jar" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.kunum-standalone-generator [build]">
+  <component name="RunManager" selected="Kotlin.AppKt">
     <configuration name="kunum-standalone-generator [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -176,10 +176,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.AppKt" />
         <item itemvalue="Gradle.kunum-standalone-generator [build]" />
         <item itemvalue="Gradle.kunum-standalone-generator [clean]" />
         <item itemvalue="Gradle.kunum-standalone-generator [jar]" />
-        <item itemvalue="Kotlin.AppKt" />
       </list>
     </recent_temporary>
   </component>
