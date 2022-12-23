@@ -84,11 +84,11 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                     ApiBuilder.get("{name}/reset/{resetValue}", { ctx ->
-                        //TODO
+                        generatorNode.resetBucket(ctx.pathParam("name"),ctx.pathParam("resetValue").toLong())
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                     ApiBuilder.get("{name}/delete", { ctx ->
-                        //TODO
+                        generatorNode.deleteBucket(ctx.pathParam("name"))
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)
                 }
