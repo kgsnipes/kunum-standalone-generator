@@ -97,7 +97,13 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
 
         api.exception(Exception::class.java) { e, ctx ->
             e.printStackTrace()
-            throw InternalServerErrorResponse(e.message?:"Error Occurred")
+            //throw InternalServerErrorResponse(e.message?:"Error Occurred")
+            ctx.result("""
+                {
+                    "error":"${e.message}"
+                }
+            """.trimIndent())
+            ctx.status(HttpStatus.INTERNAL_SERVER_ERROR)
         }?.get("/",{ ctx ->
             ctx.result(Json.encodeToString(ApiResponse("Service is up and running",null,null,"SUCCESS")))
             ctx.status(HttpStatus.OK) },Role.ANONYMOUS)

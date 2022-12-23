@@ -134,7 +134,7 @@ class GeneratorNode(val config:Properties) {
                 addEntryToLocalStorage(BucketToken(token.toLong(),bucketName,time,nodeValue))
                 updateEntryToSequenceStorage(BucketToken(token.toLong(),bucketName,time,nodeValue))
             }
-        }
+        }?:throw java.lang.RuntimeException("Bucket not available!!")
         return token!!
     }
 
@@ -223,6 +223,7 @@ class GeneratorNode(val config:Properties) {
         var bucket=getBucket(name)
         bucket?.let {
             resetSequenceInStorage(it.name,value)
+            bucketMap.remove(it.name)
             bucketMap.put(it.name, getBucket(it.name)!!)
         }
     }

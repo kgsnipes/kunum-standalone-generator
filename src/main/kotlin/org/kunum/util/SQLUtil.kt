@@ -11,7 +11,7 @@ class SQLUtil {
     {
         val entriesTableSQL="""
             CREATE TABLE IF NOT EXISTS sequenceentries(
-            token TEXT PRIMARY KEY, 
+            token TEXT, 
             name TEXT,
             created INTEGER,
             node TEXT
