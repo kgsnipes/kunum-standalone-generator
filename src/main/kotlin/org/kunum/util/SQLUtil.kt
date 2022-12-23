@@ -7,7 +7,7 @@ import java.sql.ResultSet
 
 class SQLUtil {
 
-    fun createLocalDBTable(storage: DatabaseConnection)
+    fun createSequenceEntryTable(storage: DatabaseConnection)
     {
         val entriesTableSQL="""
             CREATE TABLE IF NOT EXISTS sequenceentries(
@@ -27,7 +27,7 @@ class SQLUtil {
         }
     }
 
-    fun createSequenceDBTables(storage: DatabaseConnection)
+    fun createSequenceTable(storage: DatabaseConnection)
     {
         val sequenceTableSQL="""
             CREATE TABLE IF NOT EXISTS sequence(
@@ -45,19 +45,6 @@ class SQLUtil {
         createTableInDB(sequenceTableSQL,storage)
     }
 
-    fun createNodeHealthDBTable(sequenceStorage: DatabaseConnection)
-    {
-        val nodeHealthTableSQL="""
-            CREATE TABLE IF NOT EXISTS nodehealth(
-            name TEXT PRIMARY KEY, 
-            lastping INTEGER,
-            bucketsize INTEGER,
-            status TEXT
-            )
-        """.trimIndent()
-
-        createTableInDB(nodeHealthTableSQL,sequenceStorage)
-    }
 
     fun resultSetToBucket(rs: ResultSet): Bucket
     {

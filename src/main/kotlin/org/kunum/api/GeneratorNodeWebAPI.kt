@@ -54,19 +54,6 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                     ctx.status(HttpStatus.FORBIDDEN).result("Unauthorized")
                 }
             }
-//            config.staticFiles.add { staticFiles ->
-//                staticFiles.hostedPath = "/"                    // change to host files on a subpath, like '/assets'
-//                staticFiles.directory = "/public"               // the directory where your files are located
-//                staticFiles.location =
-//                    Location.CLASSPATH       // Location.CLASSPATH (jar) or Location.EXTERNAL (file system)
-//                staticFiles.precompress =
-//                    false                 // if the files should be pre-compressed and cached in memory (optimization)
-//                staticFiles.aliasCheck =
-//                    null                   // you can configure this to enable symlinks (= ContextHandler.ApproveAliases())
-//                //                staticFiles.headers = mapOf(...)                // headers that will be set for the files
-//                staticFiles.skipFileFunction =
-//                    { req -> false } // you can use this to skip certain files in the dir, based on the HttpServletRequest
-//            }
             config.showJavalinBanner = false
         }
 
@@ -103,12 +90,8 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
             e.printStackTrace()
             throw InternalServerErrorResponse(e.message?:"Error Occurred")
         }?.get("/",{ ctx ->
-
             ctx.result(Json.encodeToString(ApiResponse("Service is up and running",null,null,"SUCCESS")))
-            ctx.status(HttpStatus.OK)
-
-
-                   },Role.ANONYMOUS)
+            ctx.status(HttpStatus.OK) },Role.ANONYMOUS)
             ?.start()
 
         this.webApp=api

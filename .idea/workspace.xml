@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/kunum.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" afterDir="false" />
