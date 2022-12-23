@@ -116,7 +116,6 @@ class GeneratorNode(val config:Properties) {
             val rows=pstatement?.executeUpdate()
             if (rows != null && rows>0) {
                 return getBucketFromDB(bucketName)
-                //bucketMap.put(bucketName,bucket)
             }
             else
             {
