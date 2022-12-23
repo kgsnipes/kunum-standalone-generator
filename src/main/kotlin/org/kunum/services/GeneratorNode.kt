@@ -135,12 +135,12 @@ class GeneratorNode(val config:Properties) {
                 updateEntryToSequenceStorage(BucketToken(token.toLong(),bucketName,time,nodeValue))
             }
         }
-        return token?:throw java.lang.RuntimeException("No Token available")
+        return token!!
     }
 
     fun getBucket(bucketName:String):TokenBucket?{
-        var tokenBucket:TokenBucket?=null
-        if(bucketMap.get(bucketName)==null)
+        var tokenBucket:TokenBucket?=bucketMap.get(bucketName)
+        if(tokenBucket==null)
         {
             val bucket=getBucketFromDB(bucketName)
 
