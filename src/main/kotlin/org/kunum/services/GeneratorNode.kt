@@ -14,7 +14,7 @@ import java.sql.PreparedStatement
 import java.util.*
 import kotlin.coroutines.EmptyCoroutineContext
 
-class GeneratorNode(val config:Properties) {
+class GeneratorNode(val config:Properties):Generator {
 
     private var JDBC_URL=config.getString("kunum.generator.jdbcURL")
     private val log= LoggerFactory.getLogger("GeneratorNode")
@@ -78,7 +78,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun createBucket( bucketName:String, startValue:Long):Bucket?
+    override fun createBucket(bucketName:String, startValue:Long):Bucket?
     {
         if(isSequenceAvailable(bucketName))
         {
@@ -115,7 +115,7 @@ class GeneratorNode(val config:Properties) {
     }
 
 
-    fun getTokenFromBucket(bucketName:String):String{
+    override fun getTokenFromBucket(bucketName:String):String{
         val token=getBucket(bucketName)?.getToken()
         token?.let{
             CoroutineScope(EmptyCoroutineContext).launch{
@@ -127,7 +127,7 @@ class GeneratorNode(val config:Properties) {
         return token!!
     }
 
-    fun getBucket(bucketName:String):TokenBucket?{
+    private fun getBucket(bucketName:String):TokenBucket?{
         var tokenBucket:TokenBucket?=bucketMap.get(bucketName)
         if(tokenBucket==null)
         {
@@ -208,7 +208,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun resetBucket(name:String,value:Long){
+    override fun resetBucket(name:String, value:Long){
         var bucket=getBucket(name)
         bucket?.let {
             resetSequenceInStorage(it.name,value)
@@ -217,7 +217,7 @@ class GeneratorNode(val config:Properties) {
         }
     }
 
-    fun deleteBucket(name:String){
+    override fun deleteBucket(name:String){
         var bucket=getBucket(name)
         bucket?.let {
             deleteSequenceInStorage(it.name)
@@ -226,7 +226,7 @@ class GeneratorNode(val config:Properties) {
     }
 
 
-    fun stop():Unit{
+    override fun stop():Unit{
         log.info("Stopping the Generator node : ${this.nodeValue}")
         this.localStorage?.getConnection()?.close()
         api?.stop()
