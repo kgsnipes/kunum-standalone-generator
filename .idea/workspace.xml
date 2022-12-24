@@ -10,9 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/kunum/TokenBucketTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/kunum/LongSequenceTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/kunum/LongSequenceTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kunum.properties" beforeDir="false" afterPath="$PROJECT_DIR$/kunum.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <command value="gradle jar" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.TokenBucketTest">
+  <component name="RunManager" selected="Kotlin.AppKt">
     <configuration name="LongSequenceTest.getNextTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -207,11 +208,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.AppKt" />
         <item itemvalue="Gradle.TokenBucketTest" />
         <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
         <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
         <item itemvalue="Gradle.LongSequenceTest.getNextTest" />
-        <item itemvalue="Kotlin.AppKt" />
       </list>
     </recent_temporary>
   </component>

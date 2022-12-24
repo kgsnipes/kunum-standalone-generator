@@ -37,7 +37,7 @@ class GeneratorNode(val config:Properties) {
     init {
             log.info("Starting up Generator Node")
             log.info("Creating Local Storage connection")
-            localStorage=DatabaseConnection(JDBC_URL)
+            localStorage=DatabaseConnection(JDBC_URL,config.getString("kunum.generator.jdbc.user"),config.getString("kunum.generator.jdbc.password"))
             log.info("Creating Local Storage tables")
             sqlUtil.createSequenceTable(localStorage!!)
             sqlUtil.createSequenceEntryTable(localStorage!!)
