@@ -4,11 +4,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 import org.kunum.core.LongSequence
-import kotlin.concurrent.thread
+import org.kunum.core.TokenBucket
+import java.lang.RuntimeException
 
-class LongSequenceTest {
+class TokenBucketTest {
 
-    val longSequence=LongSequence()
+    val tokenBucket=TokenBucket("OrderBucket",LongSequence(1000L),1000)
 
 
     @Test
@@ -24,9 +25,9 @@ class LongSequenceTest {
                     val threadNum=x
                     println("Starting thread ${threadNum}")
                     for(y in 1..tokenLimit) {
-                        val token = longSequence.getNext()
+                        val token = tokenBucket.getToken()
                         if (container.contains(token)) {
-                            throw java.lang.RuntimeException("found duplicate token $token")
+                            throw RuntimeException("found duplicate token $token")
                         } else {
                             container.add(token)
                             println("${threadNum} consumed ${token}")
@@ -52,9 +53,9 @@ class LongSequenceTest {
                     val threadNum=x
                     println("Starting thread ${threadNum}")
                     for(y in 1..tokenLimit) {
-                        val token = longSequence.getNext()
+                        val token = tokenBucket.getToken()
                         if (container.contains(token)) {
-                            throw java.lang.RuntimeException("found duplicate token $token")
+                            throw RuntimeException("found duplicate token $token")
                         } else {
                             container.add(token)
                             println("${threadNum} consumed ${token}")
@@ -69,4 +70,3 @@ class LongSequenceTest {
         assert(threads*tokenLimit==container.size)
     }
 }
-

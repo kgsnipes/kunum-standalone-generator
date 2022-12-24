@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/kunum/LongSequenceTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/kunum/TokenBucketTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/org/kunum/LongSequenceTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/org/kunum/LongSequenceTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +96,7 @@
       <command value="gradle jar" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.LongSequenceTest.getNextTestWithThreads">
+  <component name="RunManager" selected="Gradle.TokenBucketTest">
     <configuration name="LongSequenceTest.getNextTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -142,44 +143,48 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kunum-standalone-generator [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TokenBucketTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.kunum.TokenBucketTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kunum-standalone-generator [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TokenBucketTest.getNextTestWithCoroutines" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.kunum.TokenBucketTest.getNextTestWithCoroutines&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -196,17 +201,17 @@
     <list>
       <item itemvalue="Gradle.LongSequenceTest.getNextTest" />
       <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
-      <item itemvalue="Gradle.kunum-standalone-generator [build]" />
-      <item itemvalue="Gradle.kunum-standalone-generator [clean]" />
+      <item itemvalue="Gradle.TokenBucketTest" />
+      <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
       <item itemvalue="Kotlin.AppKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TokenBucketTest" />
+        <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
         <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
         <item itemvalue="Gradle.LongSequenceTest.getNextTest" />
         <item itemvalue="Kotlin.AppKt" />
-        <item itemvalue="Gradle.kunum-standalone-generator [build]" />
-        <item itemvalue="Gradle.kunum-standalone-generator [clean]" />
       </list>
     </recent_temporary>
   </component>
