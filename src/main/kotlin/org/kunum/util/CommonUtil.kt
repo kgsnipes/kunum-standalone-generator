@@ -2,7 +2,6 @@ package org.kunum.util
 
 import java.io.File
 import java.io.FileInputStream
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 class CommonUtil {

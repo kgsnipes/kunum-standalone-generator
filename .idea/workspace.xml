@@ -10,14 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/kunum_standalone_generator_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/kunum_standalone_generator_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +53,12 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="kunum-standalone-generator" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -84,10 +90,11 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/Users/kaushikganguly/Documents/GitHub/kunum-standalone-generator",
     "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.37350428"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.33563218"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -102,53 +109,7 @@
       <command value="gradle jar" />
     </option>
   </component>
-  <component name="RunManager" selected="Kotlin.AppKt-without args">
-    <configuration name="LongSequenceTest.getNextTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.kunum.LongSequenceTest.getNextTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="LongSequenceTest.getNextTestWithThreads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.kunum.LongSequenceTest.getNextTestWithThreads&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Kotlin.AppKt">
     <configuration name="TokenBucketTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -195,10 +156,53 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="kunum-standalone-generator [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="kunum-standalone-generator [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="AppKt-without args" type="JetRunConfigurationType">
       <option name="MAIN_CLASS_NAME" value="org.kunum.AppKt" />
       <module name="kunum-standalone-generator.main" />
       <shortenClasspath name="NONE" />
+      <option name="VM_PARAMETERS" value="-DLOG_DIR=." />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,15 +210,16 @@
     <configuration name="AppKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.kunum.AppKt" />
       <module name="kunum-standalone-generator.main" />
-      <option name="PROGRAM_PARAMETERS" value="./kunum.properties" />
+      <option name="PROGRAM_PARAMETERS" value="--file ./kunum.properties" />
       <shortenClasspath name="NONE" />
+      <option name="VM_PARAMETERS" value="-DLOG_DIR=." />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.LongSequenceTest.getNextTest" />
-      <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
+      <item itemvalue="Gradle.kunum-standalone-generator [build]" />
+      <item itemvalue="Gradle.kunum-standalone-generator [jar]" />
       <item itemvalue="Gradle.TokenBucketTest" />
       <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
       <item itemvalue="Kotlin.AppKt-without args" />
@@ -223,10 +228,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.AppKt" />
+        <item itemvalue="Gradle.kunum-standalone-generator [jar]" />
+        <item itemvalue="Gradle.kunum-standalone-generator [build]" />
         <item itemvalue="Gradle.TokenBucketTest" />
         <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
-        <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
-        <item itemvalue="Gradle.LongSequenceTest.getNextTest" />
       </list>
     </recent_temporary>
   </component>

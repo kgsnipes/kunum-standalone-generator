@@ -3,17 +3,38 @@ package org.kunum
 import org.kunum.services.ApplicationService
 import org.kunum.util.CommonUtil
 import org.slf4j.LoggerFactory
+import picocli.CommandLine
 import java.util.*
+import java.util.concurrent.Callable
+import kotlin.system.exitProcess
 
 
 fun main(args:Array<String>){
+    CommandLine(KunumCommand()).execute(*args)
+}
+
+@CommandLine.Command(name = "kunum", mixinStandardHelpOptions = true, version = ["kunum 1.0"],
+    description = ["Starts the kunum app"])
+class KunumCommand : Callable<Int> {
+
+    @CommandLine.Option(names =["-f","--file"], description = ["The file to load the kunum configuration"], defaultValue = CommandLine.Option.NULL_VALUE, required=false)
+    var file: String?=null
+
+    override fun call(): Int {
+        launchKunumApp(file)
+        return 0
+    }
+}
+
+fun launchKunumApp(filePath:String?)
+{
     val log=LoggerFactory.getLogger("kunum main function")
     try {
         var props= getDefaultProperties()
-        if(args!=null && args.isNotEmpty())
+        if(filePath!=null && filePath.isNotEmpty())
         {
-            log.info("trying to read file ${args[0]} to read application config")
-            props= CommonUtil.readFileToProps(args[0])
+            log.info("trying to read file ${filePath} to read application config")
+            props= CommonUtil.readFileToProps(filePath)
         }
         log.info("Trying to start the application with the API key : ${props["kunum.dummy.oauth.token"]}")
         log.info("Trying to launch the application kunum")

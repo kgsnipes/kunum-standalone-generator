@@ -3,7 +3,6 @@ package org.kunum.util
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import java.sql.Connection
-import java.sql.SQLException
 
 
 class DataSource(val url:String, val user:String,val pwd:String) {
