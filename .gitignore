@@ -44,3 +44,4 @@ bin/
 local.db
 local.db
 local.db
+*.log

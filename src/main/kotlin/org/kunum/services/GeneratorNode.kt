@@ -3,7 +3,6 @@ package org.kunum.services
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
 import org.kunum.api.GeneratorNodeWebAPI
 import org.kunum.core.TokenBucket
 import org.kunum.data.Bucket

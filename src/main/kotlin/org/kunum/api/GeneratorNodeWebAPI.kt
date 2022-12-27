@@ -4,7 +4,7 @@ import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder
 import io.javalin.http.Context
 import io.javalin.http.HttpStatus
-import io.javalin.rendering.template.JavalinThymeleaf
+
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.eclipse.jetty.server.Server
@@ -40,7 +40,7 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
 
     fun createAndStartJavalinApp() {
 
-        JavalinThymeleaf.init()
+
         var api = Javalin.create { config ->
             config.jetty.server(::serverSupplier)
             config.accessManager { handler, ctx, routeRoles ->
@@ -64,7 +64,7 @@ class GeneratorNodeWebAPI(val generatorNode:GeneratorNode) {
                                 {
                                     "token":${generatorNode.getTokenFromBucket(ctx.pathParam("name").toString())}
                                 }
-                            """.trimIndent()
+                            """.trimIndent().trim()
                         )
                         ctx.status(HttpStatus.OK)
                     }, Role.USER)

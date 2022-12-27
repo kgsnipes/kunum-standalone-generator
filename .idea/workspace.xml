@@ -10,9 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/Generator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/api/GeneratorNodeWebAPI.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/services/GeneratorNode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -97,7 +102,7 @@
       <command value="gradle jar" />
     </option>
   </component>
-  <component name="RunManager" selected="Kotlin.AppKt">
+  <component name="RunManager" selected="Kotlin.AppKt-without args">
     <configuration name="LongSequenceTest.getNextTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -190,6 +195,14 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="AppKt-without args" type="JetRunConfigurationType">
+      <option name="MAIN_CLASS_NAME" value="org.kunum.AppKt" />
+      <module name="kunum-standalone-generator.main" />
+      <shortenClasspath name="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.kunum.AppKt" />
       <module name="kunum-standalone-generator.main" />
@@ -204,6 +217,7 @@
       <item itemvalue="Gradle.LongSequenceTest.getNextTestWithThreads" />
       <item itemvalue="Gradle.TokenBucketTest" />
       <item itemvalue="Gradle.TokenBucketTest.getNextTestWithCoroutines" />
+      <item itemvalue="Kotlin.AppKt-without args" />
       <item itemvalue="Kotlin.AppKt" />
     </list>
     <recent_temporary>
