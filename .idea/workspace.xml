@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/kunum_standalone_generator_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/kunum_standalone_generator_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/CommonUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/kunum/util/DatabaseConnection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

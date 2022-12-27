@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "org.kunum"
-version = "0.1"
+version = "1.0"
 
 repositories {
     mavenCentral()
