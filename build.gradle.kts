@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.21"
     kotlin("plugin.serialization") version "1.7.21"
     application
+    jacoco
 }
 
 group = "org.kunum"
@@ -20,17 +21,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
 
     implementation("io.javalin:javalin:5.2.0")
-
-//    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
-//    implementation("org.slf4j:slf4j-api:2.0.5")
-
-
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
     implementation("ch.qos.logback:logback-classic:1.4.5")
 
-
     implementation("com.zaxxer:HikariCP:4.0.3")
-
 
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
     implementation("org.xerial:sqlite-jdbc:3.40.0.0")
@@ -39,8 +33,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/info.picocli/picocli
     implementation("info.picocli:picocli:4.7.0")
-
-
 
     testImplementation(kotlin("test"))
 }
@@ -56,3 +48,16 @@ tasks.withType<KotlinCompile> {
 application {
     mainClass.set("org.kunum.AppKt")
 }
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
+
+
