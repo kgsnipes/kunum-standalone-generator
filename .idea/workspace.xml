@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b7a475-418e-478b-adef-8a449abc403e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +46,13 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="kunum-standalone-generator" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="kunum-standalone-generator" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -102,9 +102,13 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle jar" />
+      <command value="gradle build -DLOG_DIR=. -DSONAR_TOKEN=9053ce3a0584eae5b2634e35c733c395987b7f40" />
+      <command value="gradle sonar -DLOG_DIR=. -DSONAR_TOKEN=9053ce3a0584eae5b2634e35c733c395987b7f40" />
+      <command value="gradle sonar -DLOG_DIR=. -DSONAR_TOKEN=9053ce3a0584eae5b2634e35c733c395987b7f40 --full-stacktrace" />
+      <command value="gradle sonarqube -DLOG_DIR=. -DSONAR_TOKEN=9053ce3a0584eae5b2634e35c733c395987b7f40 --full-stacktrace" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.kunum-standalone-generator [build]">
+  <component name="RunManager" selected="Gradle.kunum-standalone-generator [sonar]">
     <configuration name="LongSequenceTest.getNextTestWithCoroutines" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -119,29 +123,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;org.kunum.LongSequenceTest.getNextTestWithCoroutines&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TokenBucketTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.kunum.TokenBucketTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -177,18 +158,23 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="kunum-standalone-generator [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="kunum-standalone-generator [sonar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="LOG_DIR" value=". ,SONAR_TOKEN=9053ce3a0584eae5b2634e35c733c395987b7f40" />
+          </map>
+        </option>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="jar" />
+            <option value="sonar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -218,20 +204,18 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.kunum-standalone-generator [sonar]" />
       <item itemvalue="Gradle.LongSequenceTest.getNextTestWithCoroutines" />
       <item itemvalue="Gradle.kunum-standalone-generator [build]" />
-      <item itemvalue="Gradle.kunum-standalone-generator [jar]" />
-      <item itemvalue="Gradle.TokenBucketTest" />
       <item itemvalue="Kotlin.AppKt-without args" />
       <item itemvalue="Kotlin.AppKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.kunum-standalone-generator [sonar]" />
         <item itemvalue="Gradle.kunum-standalone-generator [build]" />
         <item itemvalue="Gradle.LongSequenceTest.getNextTestWithCoroutines" />
         <item itemvalue="Kotlin.AppKt" />
-        <item itemvalue="Gradle.kunum-standalone-generator [jar]" />
-        <item itemvalue="Gradle.TokenBucketTest" />
       </list>
     </recent_temporary>
   </component>

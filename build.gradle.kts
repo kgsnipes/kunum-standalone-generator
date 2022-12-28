@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization") version "1.7.21"
     application
     jacoco
+    id("org.sonarqube") version "3.5.0.2730"
 }
 
 group = "org.kunum"
@@ -61,3 +62,10 @@ tasks.jacocoTestReport {
 }
 
 
+sonar {
+    properties {
+        property("sonar.projectKey", "kgsnipes_kunum-standalone-generator")
+        property("sonar.organization", "kgsnipes")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
