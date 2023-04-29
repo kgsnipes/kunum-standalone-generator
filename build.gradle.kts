@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 
 plugins {
-    kotlin("jvm") version "1.7.21"
-    kotlin("plugin.serialization") version "1.7.21"
+    kotlin("jvm") version "1.8.21"
+    kotlin("plugin.serialization") version "1.8.21"
     application
     jacoco
     id("org.sonarqube") version "3.5.0.2730"
@@ -42,9 +42,16 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile> {
+
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+//
+//kotlin{
+//    jvmToolchain(8)
+//}
 
 application {
     mainClass.set("org.kunum.AppKt")
@@ -60,12 +67,12 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
 }
-
-
-sonar {
-    properties {
-        property("sonar.projectKey", "kgsnipes_kunum-standalone-generator")
-        property("sonar.organization", "kgsnipes")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
-}
+//
+//
+//sonar {
+//    properties {
+//        property("sonar.projectKey", "kgsnipes_kunum-standalone-generator")
+//        property("sonar.organization", "kgsnipes")
+//        property("sonar.host.url", "https://sonarcloud.io")
+//    }
+//}
